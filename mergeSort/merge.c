@@ -16,7 +16,7 @@ void merge_sort(int arr[], int length) {
 void merge_sort_recursion(int arr[], int l, int r) {
     
     if(l < r) {
-        int m = l + (r-1) / 2;
+        int m = l + (r - l) / 2;
 
         merge_sort_recursion(arr, l, m); // porção esquerda do array
         merge_sort_recursion(arr, m + 1, r); // porção direita do array
@@ -26,7 +26,6 @@ void merge_sort_recursion(int arr[], int l, int r) {
 }
 
 void merge_sorted(int arr[], int l, int m, int r) {
-
     int left_length = m - l + 1;
     int right_length = r - m;
 
@@ -35,26 +34,38 @@ void merge_sorted(int arr[], int l, int m, int r) {
 
     int i, j, k;
 
-    for(int i = 0; i < left_length; i++) {
-        temp_left[i] = arr[l + 1];
+    for (i = 0; i < left_length; i++) {
+        temp_left[i] = arr[l + i];
     }
 
-    for (int i = 0; i < right_length; i++) {
-        temp_right[i] = arr[m + 1 + i];
+    for (j = 0; j < right_length; j++) {
+        temp_right[j] = arr[m + 1 + j];
     }
 
-    for (i = 0, j = 0, k = l; k <= r; k++){
-        if((i < left_length) &&
-        (j >= right_length) || temp_left[i] <= temp_right[j])
-        {
-            arr[k] = temp_left[i];
-            i++;
+    i = 0;
+    j = 0;
+    k = l;
+
+    while (i < left_length && j < right_length) {
+        if (temp_left[i] <= temp_right[j]) {
+            arr[k++] = temp_left[i++];
         } else {
-            arr[k] = temp_right[j];
-            j++;
+            arr[k++] = temp_right[j++];
         }
     }
 
+    while (i < left_length) {
+        arr[k++] = temp_left[i++];
+    }
+
+    while (j < right_length) {
+        arr[k++] = temp_right[j++];
+    }
+}
+
+
+void printArray(){
+    printf("printando array");
 }
 
 int main(){
