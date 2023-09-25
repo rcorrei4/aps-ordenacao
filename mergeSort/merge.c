@@ -63,11 +63,6 @@ void merge_sorted(int arr[], int l, int m, int r) {
     }
 }
 
-
-void printArray(){
-    printf("printando array");
-}
-
 int main(){
 
     int arr[] = { 9, 4, 8, 1, 7, 0, 3, 2, 5, 6};
