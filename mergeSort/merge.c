@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 
 void merge_sort(int arr[], int length);
 
@@ -65,14 +65,32 @@ void merge_sorted(int arr[], int l, int m, int r) {
 
 int main(){
 
-    int arr[] = { 9, 4, 8, 1, 7, 0, 3, 2, 5, 6};
-    int length = 10;
+    clock_t tic = clock();
 
-    merge_sort(arr, length);
+    FILE *arq;
+
+    arq = fopen("C:/Users/mathe/aps-ordenacao/N1500.txt", "r");
+    if(arq != NULL)
+    {
+        int x, i = 1;
+        int V[1500];
+        while(fscanf(arq, "%d", &x)!=EOF)
+        {
+            V[i] = x;
+            i++;
+        }
+        merge_sort(V, 1500);
  
-    for (int i = 0; i < length; i++) 
-        printf ("%d ", arr[i]);
-    printf("\n");
-    
+        for (int i = 0; i < 1500; i++) {
+            printf ("%d ", V[i]);
+        }
+
+    }
+
+
+    clock_t toc = clock();
+
+    printf("Elapsed: %f seconds\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+
     return 0;
 }
