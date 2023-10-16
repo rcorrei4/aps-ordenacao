@@ -68,7 +68,7 @@ int main(){
 
     arq = fopen("C:/Users/mathe/aps-ordenacao/Dados/100k/Sem Duplicidade/Aleatвrio/dtaleat100kuni0.txt", "r");
     if(arq != NULL)
-    {
+    {       
         int x, i = 1;
         int V[1500];
         while(fscanf(arq, "%d", &x)!=EOF)
