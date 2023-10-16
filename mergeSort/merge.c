@@ -71,7 +71,7 @@ int main(){
 
     arq = fopen("C:/Users/mathe/aps-ordenacao/N1500.txt", "r");
     if(arq != NULL)
-    {
+    {       
         int x, i = 1;
         int V[1500];
         while(fscanf(arq, "%d", &x)!=EOF)
