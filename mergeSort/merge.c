@@ -2,18 +2,16 @@
 #include <stdlib.h>
 
 void merge_sort(int arr[], int length);
-
 void merge_sort_recursion(int arr[], int l, int r);
-
 void merge_sorted(int arr[], int l, int m, int r);
 
-void merge_sort(int arr[], int length) {
+int count = 0;
 
+void merge_sort(int arr[], int length) {
     merge_sort_recursion(arr, 0, length - 1);
 }
 
 void merge_sort_recursion(int arr[], int l, int r) {
-    
     if(l < r) {
         int m = l + (r - l) / 2;
 
@@ -22,6 +20,7 @@ void merge_sort_recursion(int arr[], int l, int r) {
 
         merge_sorted(arr, l, m, r);
     }
+
 }
 
 void merge_sorted(int arr[], int l, int m, int r) {
@@ -51,6 +50,7 @@ void merge_sorted(int arr[], int l, int m, int r) {
         } else {
             arr[k++] = temp_right[j++];
         }
+        count++;
     }
 
     while (i < left_length) {
@@ -66,24 +66,23 @@ int main(){
 
     FILE *arq;
 
-    arq = fopen("C:/Users/mathe/aps-ordenacao/Dados/100k/Sem Duplicidade/Aleatвrio/dtaleat100kuni0.txt", "r");
+    arq = fopen("C:/Users/mathe/aps-ordenacao/Dados/50k/Sem Duplicidade/Aleatвrio/dtaleat50kuni0.txt", "r");
     if(arq != NULL)
     {       
         int x, i = 1;
-        int V[1500];
+        int V[50000];
         while(fscanf(arq, "%d", &x)!=EOF)
         {
             V[i] = x;
             i++;
         }
-        merge_sort(V, 1500);
+        merge_sort(V, 50000);
  
-        for (int i = 0; i < 1500; i++) {
+        for (int i = 0; i < 50000; i++) {
             printf ("%d\n ", V[i]);
         }
-
+        printf("Comparações: %d", count);
     }
-
     return 0;
 }
 
