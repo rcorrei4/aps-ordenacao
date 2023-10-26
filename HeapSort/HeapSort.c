@@ -52,26 +52,25 @@ void maxHeapify(int arr[], int n, int i) {
 
     if (filho_esquerda < n && arr[filho_esquerda] > arr[maior])
         maior = filho_esquerda;
-        count++;
 
     if (filho_direita < n && arr[filho_direita] > arr[maior])
         maior = filho_direita;
-        count++;
 
     if (maior != i) {
         swap(&arr[i], &arr[maior]);
         maxHeapify(arr, n, maior);
-        count++;
     }
 }
 
 void heapSort(int arr[], int n) {
     for (int i = n / 2 - 1; i >= 0; i--)
         maxHeapify(arr, n, i);
+        count++;
 
     for (int i = n - 1; i > 0; i--) {
         swap(&arr[0], &arr[i]);
         maxHeapify(arr, i, 0);
+        count++;
     }
 }
 
