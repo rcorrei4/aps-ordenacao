@@ -81,7 +81,4 @@ int main(){
         printf("Comparações: %d", count);
     }
     return 0;
-
-    
 }
-
