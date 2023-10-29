@@ -66,7 +66,7 @@ int main(){
 
     FILE *arq;
 
-    arq = fopen("C:/Users/mathe/aps-ordenacao/Dados/50k/Sem Duplicidade/Aleatвrio/dtaleat50kuni0.txt", "r");
+    arq = fopen("C:/Users/ricar/Documents/UNIP/aps-ordenacao/Dados/50k/Sem Duplicidade/Aleatorio/dtaleat50kuni0.txt", "r");
     if(arq != NULL)
     {       
         int x, i = 1;
@@ -84,4 +84,11 @@ int main(){
         printf("Comparações: %d", count);
     }
     return 0;
+<<<<<<< HEAD
 }
+=======
+
+    
+}
+
+>>>>>>> 7afcd6dfc648f4a480e4134a4e3da2a05a4b66c4
