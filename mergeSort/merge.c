@@ -34,10 +34,12 @@ void merge_sorted(int arr[], int l, int m, int r) {
 
     for (i = 0; i < left_length; i++) {
         temp_left[i] = arr[l + i];
+        count++;
     }
 
     for (j = 0; j < right_length; j++) {
         temp_right[j] = arr[m + 1 + j];
+        count++;
     }
 
     i = 0;
@@ -50,7 +52,6 @@ void merge_sorted(int arr[], int l, int m, int r) {
         } else {
             arr[k++] = temp_right[j++];
         }
-        count++;
     }
 
     while (i < left_length) {
@@ -77,10 +78,6 @@ int main(){
             i++;
         }
         merge_sort(V, 50000);
- 
-        for (int i = 0; i < 50000; i++) {
-            printf ("%d\n ", V[i]);
-        }
         printf("Comparações: %d", count);
     }
     return 0;

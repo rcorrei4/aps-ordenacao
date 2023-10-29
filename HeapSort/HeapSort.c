@@ -17,17 +17,17 @@ char *paths[] = {
     };
 
 char *tipo_dado[] = {
-"Com duplicidade - Aleatorio",
-"Com duplicidade - Concavo-DecresceCresce",
-"Com duplicidade - Convexo-CresceDecresce",
-"Com duplicidade - Crescente",
-"Com duplicidade - Decrescente",
+    "Com duplicidade - Aleatorio",
+    "Com duplicidade - Concavo-DecresceCresce",
+    "Com duplicidade - Convexo-CresceDecresce",
+    "Com duplicidade - Crescente",
+    "Com duplicidade - Decrescente",
 
-"Sem duplicidade - Aleatorio",
-"Sem duplicidade - Concavo-DecresceCresce",
-"Sem duplicidade - Convexo-CresceDecresce",
-"Sem duplicidade - Crescente",
-"Sem duplicidade - Decrescente",
+    "Sem duplicidade - Aleatorio",
+    "Sem duplicidade - Concavo-DecresceCresce",
+    "Sem duplicidade - Convexo-CresceDecresce",
+    "Sem duplicidade - Crescente",
+    "Sem duplicidade - Decrescente",
 };
 
 char *tamanho_dado[] = {
@@ -50,6 +50,7 @@ void maxHeapify(int arr[], int n, int i) {
     int filho_esquerda = 2 * i + 1;
     int filho_direita = 2 * i + 2;
 
+    
     if (filho_esquerda < n && arr[filho_esquerda] > arr[maior])
         maior = filho_esquerda;
 
@@ -59,18 +60,18 @@ void maxHeapify(int arr[], int n, int i) {
     if (maior != i) {
         swap(&arr[i], &arr[maior]);
         maxHeapify(arr, n, maior);
+        count++;
     }
 }
 
 void heapSort(int arr[], int n) {
-    for (int i = n / 2 - 1; i >= 0; i--)
+    for (int i = n / 2 - 1; i >= 0; i--) {
         maxHeapify(arr, n, i);
-        count++;
+    }   
 
     for (int i = n - 1; i > 0; i--) {
         swap(&arr[0], &arr[i]);
         maxHeapify(arr, i, 0);
-        count++;
     }
 }
 
@@ -99,6 +100,7 @@ char* build_path_name(int j_index, int k_index) {
 int main() {
     for (int j = 0; j < 9; j++) {
         for (int k = 0; k < 10; k++) {
+            
             FILE* arq;
             char *path = build_path_name(j, k);
             arq = fopen(path, "r");
@@ -109,9 +111,10 @@ int main() {
                     V[i] = x;
                     i++;
                 }
-                count = 0; 
                 heapSort(V, tamanho_dado_int[j]);
-                printf("%s %s - Comparações: %d\n", tamanho_dado[j], tipo_dado[k], count);
+                count = 0;
+                heapSort(V, tamanho_dado_int[j]);
+                printf("%s %s - Iterações: %d\n", tamanho_dado[j], tipo_dado[k], count);
             }
         }
     }
